@@ -10,7 +10,7 @@ public class Monster
     public int id;
     public string name;
     //Type
-    public Type type = ;
+    public Type type = new Grass();
     //Levels
     public int lvl;
     private int maxLvl = 100;
@@ -43,8 +43,7 @@ public class Monster
     public float spDefMod = 1;
     public float spdMod = 1;
     //Skill
-    public int[] skill;
-    public int[] skillPP;
+    public Skill[] skill = new Skill[4] {new Leaf_Cutter(), new Leaf_Blade() , new Leaf_Cutter(), new Leaf_Blade()};
 
     private double pow(double a, int b){
         double ans = 1;
@@ -54,12 +53,13 @@ public class Monster
         return ans;
     }
 
-    public Monster(int lvl){
+    public Monster(int lvl){ //Update stats
         this.lvl = lvl;
         lvlUp();
         maxExpCal();
+        this.hpLeft = hp;
     }
-
+    //Level
     public int expGained(int exp){
         this.exp += exp;
         while (this.exp >= maxExp){
@@ -91,4 +91,28 @@ public class Monster
         this.spd = baseSpd+(spdUp*(lvl-1));
         return 1;
     }
+    
+    public void skillUse(int id, Monster target){
+        skill[id].moveUse(this, target);
+    }
+    //Take damage
+    public void takePhyDmg(Skill skill, Monster attacker){
+        double damage = ((2*attacker.lvl/5)*skill.power*attacker.atk/this.def/50)+2;
+        if (attacker.type.typeEffective[this.type.id] == 2){
+            Debug.Log("Super effective");
+            damage *= 2;
+        }
+        else if (attacker.type.typeEffective[this.type.id] == 0.5){
+            Debug.Log("Not very effective");
+            damage *= 0.5;
+        }
+        else if (attacker.type.typeEffective[this.type.id] == 1){
+            Debug.Log("Normal");
+        }
+        if (attacker.type.id == skill.type.id){
+            damage *= 1.5;
+        }
+        this.hpLeft -= Convert.ToInt32(damage);
+    }
+
 }
