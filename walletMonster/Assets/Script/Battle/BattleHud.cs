@@ -9,8 +9,10 @@ public class BattleHub : MonoBehaviour
     [SerializeField] Text levelText;
     [SerializeField] HPBar hpBar;
 
-    public void SetData(Pokemon pokemon)
+    public void SetData(Monster monster)
     {
-        nameText.text = pokemon.Ba
+        nameText.text = monster.Base.Name;
+        levelText.text = "Lv1 " + monster.Level;
+        hpBar.SetHP((float)monster.HP / monster.MaxHP);
     }
 }
