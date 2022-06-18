@@ -9,8 +9,7 @@ public class BattleHub : MonoBehaviour
     [SerializeField] Text levelText;
     [SerializeField] HPBar hpBar;
 
-    public void SetData(Pokemon pokemon)
+    public void SetData(Monster monster)
     {
-        nameText.text = pokemon.Ba
     }
 }

@@ -5,32 +5,43 @@ using UnityEngine;
 [System.Serializable]
 public class Type
 {
-    void Start(){
-        TypeClass[] type = new TypeClass[3];
+    public string name;
+    public int id;
+    public double[] typeEffective;
+}
 
-        type[0].name = "Grass";
-        type[0].id = 1;
-        type[0].typeOffensive = new double[] {1, 2, 0.5};
-        type[0].typeDefensive = new double[] {1, 0.5, 2};
-
-        type[1].name = "Water";
-        type[1].id = 2;
-        type[1].typeOffensive = new double[] {0.5, 1, 2};
-        type[1].typeDefensive = new double[] {2, 1, 0.5};
-
-        type[2].name = "Fire";
-        type[2].id = 3;
-        type[2].typeOffensive = new double[] {2, 0.5, 1};
-        type[2].typeDefensive = new double[] {0.5, 2, 1};
+public class Normal : Type // normal type id 0
+{
+    public Normal(){
+        this.name = "normal";
+        this.id = 0;
+        this.typeEffective = new double[4] {1, 1, 1, 1};
     }
 }
 
-[System.Serializable]
-public class TypeClass
+public class Grass : Type //grass type id 1
 {
-    public int id;
-    public string name;
+    public Grass(){
+        this.name = "grass";
+        this.id = 1;
+        this.typeEffective = new double[4] {1, 1, 2, 0.5};
+    }
+}
 
-    public double[] typeOffensive;
-    public double[] typeDefensive;
+public class Water : Type // water type id 2
+{
+    public Water(){
+        this.name = "water";
+        this.id = 2;
+        this.typeEffective = new double[4] {1, 0.5, 1, 2};
+    }
+}
+
+public class Fire : Type // fire type id 3
+{
+    public Fire(){
+        this.name = "fire";
+        this.id = 3;
+        this.typeEffective = new double[4] {1, 2, 0.5, 1};
+    }
 }
