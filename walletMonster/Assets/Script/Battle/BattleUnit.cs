@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class BattleUnit : MonoBehaviour
 {
-    [SerializeField] Monster _base;
-    [SerializeField] int level;
-    [SerializeField] bool isPlayerUnit;
+    // [SerializeField] Monster _base;
+    // [SerializeField] int level;
+    // [SerializeField] bool isPlayerUnit;
 
-    public Monster monster { get; set; }
+    // public Monster monster { get; set; }
 
-    public void Setup()
-    {
-        monster = new Monster(_base, level);
-        if (isPlayerUnit)
-            GetComponent<Image>().sprite = monster.Base.BackSprite;
-        else
-            GetComponent<Image>().sprite = monster.Base.FrontSprite;
-    }
+    // public void Setup()
+    // {
+        // monster = new Monster(_base, level);
+        // if (isPlayerUnit)
+            // GetComponent<Image>().sprite = monster.Base.BackSprite;
+        // else
+            // GetComponent<Image>().sprite = monster.Base.FrontSprite;
+    // }
 }
