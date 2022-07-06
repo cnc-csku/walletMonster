@@ -11,13 +11,15 @@ public class Player : MonoBehaviour
 
     void Start (){
         
-        monster[0] = new Monster(100);
-        monster[1] = new Monster(100);
+        monster[0] = new Sprigatito(100);
+        monster[1] = new Litten(100);
+        monster[2] = new Popplio(100);
+        monster[3] = new Eevee(100);
     }
 
     void Update(){
         if (Input.GetButtonDown("Debug Next")){
-            monster[0].skillUse(1, monster[1]);
+            monster[0].moveUse(1, monster[1]);
         }
     }
     
